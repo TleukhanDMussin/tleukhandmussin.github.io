@@ -1,10 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Personal Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name's Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            overflow: hidden;
+        }
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .content {
+            padding: 20px;
+        }
+        .section-title {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>Hello! This is my personal website hosted on GitHub Pages.</p>
+
+    <!-- Header with name -->
+    <header>
+        <h1>Your Name</h1>
+        <p>Welcome to my personal website!</p>
+    </header>
+
+    <!-- Navigation bar with links -->
+    <nav>
+        <a href="about.html">About</a>
+        <a href="news.html">News</a>
+        <a href="projects.html">Projects</a>
+        <a href="cv.html">CV</a>
+        <a href="publications.html">Publications</a>
+    </nav>
+
+    <!-- Main content section -->
+    <div class="content">
+        <!-- Short biography -->
+        <div>
+            <h2 class="section-title">Biography</h2>
+            <p>Hi, I'm [Your Name], a Master's student in Electrical Engineering at the University of Alberta. I specialize in robotics, control systems, and intelligent systems. Currently, I'm developing a flexible track-based robot for real-world applications such as pipeline inspection and exploration. My goal is to apply my research to real-world problems and make an impact in the field of robotics and automation.</p>
+        </div>
+
+        <!-- Recent News -->
+        <div>
+            <h2 class="section-title">Recent News</h2>
+            <ul>
+                <li>Published a paper in IEEE Transactions on Mechatronics - September 2024</li>
+                <li>Presented research at the International Conference on Robotics - August 2024</li>
+                <li>Submitted a patent for my track-based robot project - July 2024</li>
+            </ul>
+        </div>
+    </div>
+
 </body>
 </html>
+
