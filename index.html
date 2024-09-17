@@ -3,80 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name's Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-        nav {
-            background-color: #444;
-            overflow: hidden;
-        }
-        nav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            background-color: #555;
-        }
-        .content {
-            padding: 20px;
-        }
-        .section-title {
-            color: #333;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <title>Your Name</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header with name -->
-    <header>
-        <h1>Your Name</h1>
-        <p>Welcome to my personal website!</p>
-    </header>
-
-    <!-- Navigation bar with links -->
+    <!-- Navigation bar -->
     <nav>
-        <a href="about.html">About</a>
-        <a href="news.html">News</a>
-        <a href="projects.html">Projects</a>
-        <a href="cv.html">CV</a>
-        <a href="publications.html">Publications</a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="projects.html">Research</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
     </nav>
 
-    <!-- Main content section -->
-    <div class="content">
-        <!-- Short biography -->
-        <div>
-            <h2 class="section-title">Biography</h2>
-            <p>Hi, I'm [Your Name], a Master's student in Electrical Engineering at the University of Alberta. I specialize in robotics, control systems, and intelligent systems. Currently, I'm developing a flexible track-based robot for real-world applications such as pipeline inspection and exploration. My goal is to apply my research to real-world problems and make an impact in the field of robotics and automation.</p>
+    <!-- Main content -->
+    <div class="main-container">
+        <div class="profile-container">
+            <img src="your-photo.jpg" alt="Your Name" class="profile-picture">
+            <h1>Hello, I'm [Your Name].</h1>
+            <p class="intro">
+                I'm a Master's student in Electrical Engineering at the University of Alberta. My research focuses on robotics, machine learning, and control systems. I work on real-world projects, such as developing a flexible track-based robot for pipeline inspection.
+            </p>
         </div>
 
-        <!-- Recent News -->
-        <div>
-            <h2 class="section-title">Recent News</h2>
+        <div class="news-section">
+            <h2>Latest News</h2>
             <ul>
-                <li>Published a paper in IEEE Transactions on Mechatronics - September 2024</li>
-                <li>Presented research at the International Conference on Robotics - August 2024</li>
-                <li>Submitted a patent for my track-based robot project - July 2024</li>
+                <li><span>September 2024</span> Published a paper in IEEE Transactions on Mechatronics</li>
+                <li><span>August 2024</span> Presented research at the International Conference on Robotics</li>
+                <li><span>July 2024</span> Submitted a patent for the flexible track-based robot</li>
             </ul>
         </div>
     </div>
 
 </body>
 </html>
-
