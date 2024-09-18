@@ -62,6 +62,9 @@ a {
     height: 150px;
     object-fit: cover;
     margin-bottom: 20px;
+    display: block;       /* Makes it block-level */
+    margin-left: auto;    /* Centers the image horizontally */
+    margin-right: auto;   /* Centers the image horizontally */
 }
 
 h1 {
