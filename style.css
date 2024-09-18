@@ -12,6 +12,11 @@ a {
     color: #333;
 }
 
+a {
+    font-weight: bold;
+}
+
+
 .container {
     max-width: 900px;
     margin: 0 auto;
