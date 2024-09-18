@@ -58,8 +58,8 @@ a {
 
 .profile-picture {
     border-radius: 50%;
-    width: 4000px;
-    height: 6000px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     margin-bottom: 20px;
     display: block;       /* Makes it block-level */
