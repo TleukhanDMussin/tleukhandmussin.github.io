@@ -147,3 +147,38 @@ p {
     color: #555;  /* Change icon color on hover */
 }
 
+/* Experience Section */
+.experience-item {
+    margin-bottom: 30px;
+    padding: 15px;
+    border-left: 3px solid #4CAF50; /* Adds a vertical green line */
+    padding-left: 10px;
+}
+
+.experience-item h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.institution {
+    font-size: 1rem;
+    font-style: italic;
+    color: #666;
+    margin-top: -10px;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    margin-top: 5px;
+}
+
