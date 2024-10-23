@@ -99,7 +99,7 @@ h1 {
 h2 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #333;
+    color: #111;
     font-weight: 600;
     margin-top: 30px;
 }
@@ -129,3 +129,24 @@ p {
     max-width: 700px;
     margin: 0 auto 20px;
 }
+
+.cv-link {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    text-decoration: none;
+}
+
+.cv-link i {
+    margin-left: 5px; /* Adds space between the text and the icon */
+    font-size: 1rem;  /* Adjusts the icon size */
+}
+
+.cv-link:hover {
+    color: #555;  /* Change color on hover */
+}
+
+.cv-link:hover i {
+    color: #555;  /* Change icon color on hover */
+}
+
