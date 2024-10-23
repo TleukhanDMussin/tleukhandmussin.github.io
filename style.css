@@ -149,36 +149,54 @@ p {
 
 /* Experience Section */
 .experience-item {
+    display: flex;
+    align-items: flex-start;
     margin-bottom: 30px;
-    padding: 15px;
-    border-left: 3px solid #4CAF50; /* Adds a vertical green line */
-    padding-left: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.experience-item h3 {
+.experience-icon {
+    margin-right: 15px;
     font-size: 1.5rem;
+    color: #4CAF50;
+}
+
+.experience-content h3 {
+    font-size: 1.2rem;
     font-weight: 600;
-    margin-bottom: 5px;
     color: #333;
+    margin-bottom: 5px;
 }
 
 .institution {
     font-size: 1rem;
     font-style: italic;
     color: #666;
-    margin-top: -10px;
+    margin: 0;
 }
 
 .date {
     font-size: 0.9rem;
     color: #888;
+    margin-top: 2px;
     margin-bottom: 10px;
 }
 
 .description {
     font-size: 1rem;
     color: #555;
-    line-height: 1.5;
-    margin-top: 5px;
+    line-height: 1.6;
 }
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
 
