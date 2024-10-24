@@ -296,7 +296,6 @@ p {
     text-align: left;
     margin-left: -10px; /* Shift the title to the left */
     padding-left: 0;
-    border-left: 3px solid #4CAF50; /* Add green line next to title */
     padding-top: 10px;
     padding-bottom: 10px;
 }
