@@ -148,18 +148,6 @@ p {
 }
 
 /* Experience Timeline Styling */
-.experience-timeline {
-    position: relative;
-    list-style: none;
-    padding-left: 2rem;
-    border-left: 2px solid #ccc;
-}
-
-.experience-item {
-    position: relative;
-    margin-bottom: 2rem;
-    padding-left: 1rem;
-}
 
 .experience-icon {
     position: absolute;
@@ -174,31 +162,6 @@ p {
     justify-content: center;
     color: white;
     font-size: 0.9rem;
-}
-
-.experience-content h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #333;
-}
-
-.institution {
-    font-size: 1rem;
-    font-style: italic;
-    color: #666;
-    margin: 0.5rem 0;
-}
-
-.date {
-    font-size: 0.9rem;
-    color: #888;
-    margin-bottom: 0.5rem;
-}
-
-.description {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.5;
 }
 
 /* Updated Experience Timeline Styling */
