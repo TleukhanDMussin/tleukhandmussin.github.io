@@ -164,3 +164,8 @@ h2 {
 .cv-link:hover {
     color: #555;
 }
+
+p {
+    font-size: 1.8rem; /* Set the font size for all paragraphs */
+    line-height: 1.6; /* Adjust line height for better readability */
+}
