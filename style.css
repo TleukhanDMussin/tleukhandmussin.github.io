@@ -207,11 +207,12 @@ p {
     padding: 0;
     margin: 0;
     margin-top: 30px;
+    padding-left: 10px; /* Move timeline closer to the left */
 }
 
 .experience-item, .education-item {
     margin-bottom: 30px;
-    padding-left: 20px;
+    padding-left: 15px; /* Move content closer to the left */
     border-left: 3px solid #4CAF50;
     position: relative;
 }
@@ -223,7 +224,7 @@ p {
     background-color: #4CAF50;
     border-radius: 50%;
     position: absolute;
-    left: -6px;
+    left: -12px; /* Move dot closer to the green line */
     top: 5px;
 }
 
@@ -231,23 +232,26 @@ p {
     font-size: 1.3rem;
     font-weight: 600;
     color: #333;
+    margin: 0; /* Remove extra margin */
 }
 
 .institution {
     font-size: 1rem;
     font-style: italic;
     color: #666;
-    margin: 0.5rem 0;
+    margin: 0.3rem 0; /* Reduce vertical spacing */
 }
 
 .date {
     font-size: 0.9rem;
     color: #888;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem; /* Reduce vertical spacing */
 }
 
 .description {
     font-size: 1rem;
     color: #555;
-    line-height: 1.5;
+    line-height: 1.4; /* Reduce line spacing for a tighter look */
+    margin: 0; /* Remove extra margin */
 }
+
