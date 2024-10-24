@@ -127,24 +127,6 @@ h2 {
     color: #666;
 }
 
-/* Remove Grey Lines from Section Titles */
-.experience-section h2,
-.bio h2 {
-    text-align: left;
-    margin: 0 0 10px 0;
-    padding-left: 0;
-    border-left: none; /* Remove grey line */
-}
-
-/* Brief Biography Section */
-.bio {
-    max-width: 600px;
-    margin: 0 auto;
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.6;
-}
-
 .date {
     font-size: 0.9rem;
     color: #888;
