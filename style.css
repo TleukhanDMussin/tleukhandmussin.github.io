@@ -48,38 +48,7 @@ a {
     border-bottom: 2px solid #111;
 }
 
-/* Headings */
-h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #111;
-}
-
-h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    margin: 20px 0 10px;
-    text-align: left;
-    color: #111;
-    padding-left: 10px;
-}
-
-h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 20px;
-}
-
-/* Main Content Section */
+/* Main Section */
 .main-content {
     padding: 50px 20px;
     background-color: #fdfdfd;
@@ -88,7 +57,25 @@ p {
     border-radius: 8px;
 }
 
-/* Experience Section */
+/* Headings */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #111;
+    font-weight: 600;
+    margin: 20px 0 10px 0;
+    padding-left: 0;
+    text-align: left;
+    /*border-left: 3px solid #ccc; /* Aligns with green line */*/
+    padding-left: 10px; /* Creates spacing from green line */
+}
+
+/* Experience Section Styling */
 .experience-section {
     margin-top: 40px;
     padding: 0 20px;
@@ -102,22 +89,37 @@ p {
 
 .experience-item {
     margin-bottom: 20px;
-    padding-left: 0;
+    padding-left: 0; /* Remove extra padding */
     position: relative;
+    border-left: 3px solid #ccc; /* Green line */
+    padding-top: 5px;
+}
+
+.experience-item::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background-color: #ccc;
+    border-radius: 50%;
+    position: absolute;
+    left: -6px; /* Align bullet closer to green line */
+    top: 5px;
 }
 
 .experience-item h3 {
     font-size: 1.2rem;
     font-weight: 600;
-    margin: 0;
-    padding-left: 10px;
+    color: #333;
+    margin: 0; /* Remove default margin */
+    padding-left: 10px; /* Consistent left padding */
+    text-align: left;
 }
 
 .institution, .date, .description {
     font-size: 1rem;
-    margin: 0.2rem 0;
-    padding-left: 10px;
-    text-align: left;
+    margin: 0.2rem 0; /* Reduced vertical spacing */
+    padding-left: 10px; /* Aligns with other elements */
+    text-align: left; /* Align all text to the left */
 }
 
 .institution {
@@ -133,13 +135,53 @@ p {
 .description {
     font-size: 1rem;
     color: #555;
-    line-height: 1.4;
+    line-height: 1.4; /* Improved readability */
 }
 
-/* Awards Section */
+/* Profile Picture */
+.profile-picture {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+/* Links */
+.cv-link {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    text-decoration: none;
+}
+
+.cv-link i {
+    margin-left: 5px;
+    font-size: 1rem;
+}
+
+.cv-link:hover {
+    color: #555;
+}
+
+p {
+    font-size: 1.3rem; /* Set the font size for all paragraphs */
+    line-height: 1.6; /* Adjust line height for better readability */
+}
+
+
+/*Awards section*/
+/*---------------------------------------------------------------------------------------------------------------------*/
 .awards-section {
     margin-top: 40px;
     padding: 20px;
+}
+
+.awards-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
 .awards-table {
@@ -160,22 +202,31 @@ p {
 }
 
 .awards-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Light grey for even rows */
 }
 
 .awards-table tr:nth-child(odd) {
-    background-color: #fff;
+    background-color: #fff; /* White for odd rows */
 }
 
 .awards-table td {
     font-size: 1rem;
     color: #555;
 }
+/*---------------------------------------------------------------------------------------------------------------------*/
 
-/* Project Section */
+/*Project Section*/
+/*---------------------------------------------------------------------------------------------------------------------*/
 .projects-section {
     margin-top: 40px;
     padding: 0 20px;
+}
+
+.projects-section h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
 .projects-grid {
@@ -185,18 +236,17 @@ p {
 }
 
 .project-card {
-    flex: 1 1 calc(33.333% - 20px);
+    width: calc(33.333% - 20px); /* 3 cards per row with spacing */
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px); /* Slight lift effect on hover */
 }
 
 .project-card a {
@@ -219,6 +269,7 @@ p {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 10px;
+    color: #333;
 }
 
 .project-info p {
@@ -232,34 +283,11 @@ p {
     color: #888;
 }
 
-/* Profile Picture */
-.profile-picture {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    margin: 0 auto 20px;
-    display: block;
+.project-image {
+    width: 100%;
+    height: 180px;  /* Fixed height to ensure consistency */
+    object-fit: cover; /* Crop the image while maintaining aspect ratio */
+    border-bottom: 1px solid #ddd; /* Optional: adds a border below the image */
 }
 
-/* Links */
-.cv-link {
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: #333;
-}
-
-.cv-link:hover {
-    color: #555;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .projects-grid {
-        flex-direction: column;
-    }
-
-    .project-card {
-        width: 100%;
-    }
-}
+/*---------------------------------------------------------------------------------------------------------------------*/
