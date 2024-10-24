@@ -169,3 +169,47 @@ p {
     font-size: 1.8rem; /* Set the font size for all paragraphs */
     line-height: 1.6; /* Adjust line height for better readability */
 }
+
+
+/*Awards section*/
+.awards-section {
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.awards-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.awards-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.awards-table th, .awards-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.awards-table th {
+    background-color: #f4f4f4;
+    font-weight: 600;
+}
+
+.awards-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light grey for even rows */
+}
+
+.awards-table tr:nth-child(odd) {
+    background-color: #fff; /* White for odd rows */
+}
+
+.awards-table td {
+    font-size: 1rem;
+    color: #555;
+}
+
