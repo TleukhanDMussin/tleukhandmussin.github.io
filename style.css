@@ -242,6 +242,7 @@ p {
     color: #666;
     margin-top: 0.2rem;
     padding-left: 0px;
+    text-align: left;
 }
 
 .date {
@@ -249,6 +250,7 @@ p {
     color: #888;
     margin-top: 0.2rem;
     padding-left: 0px;
+    text-align: left;
 }
 
 .description {
@@ -257,6 +259,7 @@ p {
     margin-top: 0.3rem;
     line-height: 1.4;
     padding-left: 0px;
+    text-align: left;
 }
 
 /* Align Experience Title with the Green Line */
