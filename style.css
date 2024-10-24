@@ -196,24 +196,6 @@ p {
     color: #333;
 }
 
-.institution {
-    font-size: 1rem;
-    font-style: italic;
-    color: #666;
-    margin: 0.5rem 0;
-}
-
-.date {
-    font-size: 0.9rem;
-    color: #888;
-    margin-bottom: 0.5rem;
-}
-
-.description {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.5;
-}
 
 /* Updated Experience Section Styling */
 .experience-section {
@@ -248,7 +230,7 @@ p {
 .date {
     font-size: 0.9rem;
     color: #888;
-    margin-top: 0.2rem;
+    margin-top: 0 rem;
     padding-left: 0px;
     text-align: left;
 }
