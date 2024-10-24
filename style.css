@@ -201,18 +201,18 @@ p {
     line-height: 1.5;
 }
 
-/* Updated Experience Timeline Styling */
+/* Align text to the left and closer to the green line */
 .experience-timeline, .education-timeline {
     list-style: none;
     padding: 0;
     margin: 0;
     margin-top: 30px;
-    padding-left: 10px; /* Move timeline closer to the left */
+    padding-left: 5px; /* Move the timeline closer to the line */
 }
 
 .experience-item, .education-item {
     margin-bottom: 30px;
-    padding-left: 15px; /* Move content closer to the left */
+    padding-left: 10px; /* Reduce padding to move closer to the line */
     border-left: 3px solid #4CAF50;
     position: relative;
 }
@@ -224,7 +224,7 @@ p {
     background-color: #4CAF50;
     border-radius: 50%;
     position: absolute;
-    left: -12px; /* Move dot closer to the green line */
+    left: -14px; /* Move dot closer to the line */
     top: 5px;
 }
 
@@ -232,26 +232,27 @@ p {
     font-size: 1.3rem;
     font-weight: 600;
     color: #333;
-    margin: 0; /* Remove extra margin */
+    margin: 0;
 }
 
 .institution {
     font-size: 1rem;
     font-style: italic;
     color: #666;
-    margin: 0.3rem 0; /* Reduce vertical spacing */
+    margin: 0.3rem 0;
 }
 
 .date {
     font-size: 0.9rem;
     color: #888;
-    margin-bottom: 0.3rem; /* Reduce vertical spacing */
+    margin-bottom: 0.3rem;
 }
 
 .description {
     font-size: 1rem;
     color: #555;
-    line-height: 1.4; /* Reduce line spacing for a tighter look */
-    margin: 0; /* Remove extra margin */
+    line-height: 1.4;
+    margin: 0;
 }
+
 
