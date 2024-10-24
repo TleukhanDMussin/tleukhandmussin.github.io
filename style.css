@@ -13,7 +13,6 @@ a {
     font-weight: bold;
 }
 
-
 .container {
     max-width: 900px;
     margin: 0 auto;
@@ -44,17 +43,13 @@ a {
     color: #333;
 }
 
-.menu a:hover {
-    border-bottom: 2px solid #111;
-}
-
+.menu a:hover,
 .menu .active {
-    border-bottom: 2px solid #111;  /* Highlight the active page */
+    border-bottom: 2px solid #111;
 }
 
 /* Main Section */
 .main-content {
-    text-align: center;
     padding: 50px 20px;
     background-color: #fdfdfd;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
@@ -62,71 +57,98 @@ a {
     border-radius: 8px;
 }
 
+/* Headings */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #111;
+    font-weight: 600;
+    margin: 20px 0 10px 0;
+    padding-left: 0;
+    text-align: left;
+    border-left: 3px solid #4CAF50; /* Aligns with green line */
+    padding-left: 10px; /* Creates spacing from green line */
+}
+
+/* Experience Section Styling */
+.experience-section {
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.experience-timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.experience-item {
+    margin-bottom: 20px;
+    padding-left: 0; /* Remove extra padding */
+    position: relative;
+    border-left: 3px solid #4CAF50; /* Green line */
+    padding-top: 5px;
+}
+
+.experience-item::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    position: absolute;
+    left: -6px; /* Align bullet closer to green line */
+    top: 5px;
+}
+
+.experience-item h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0; /* Remove default margin */
+    padding-left: 10px; /* Consistent left padding */
+    text-align: left;
+}
+
+.institution, .date, .description {
+    font-size: 1rem;
+    margin: 0.2rem 0; /* Reduced vertical spacing */
+    padding-left: 10px; /* Aligns with other elements */
+    text-align: left; /* Align all text to the left */
+}
+
+.institution {
+    font-style: italic;
+    color: #666;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.4; /* Improved readability */
+}
+
+/* Profile Picture */
 .profile-picture {
     border-radius: 50%;
     width: 150px;
     height: 150px;
     object-fit: cover;
-    margin-bottom: 20px;
-    display: block;       /* Makes it block-level */
-    margin-left: auto;    /* Centers the image horizontally */
-    margin-right: auto;   /* Centers the image horizontally */
-}
-
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-
-.bio {
-    max-width: 600px;
-    margin: 0 auto;
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.6;
-}
-
-.latest-news {
-    text-align: left;
-    margin-top: 50px;
-}
-
-h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #111;
-    font-weight: 600;
-    margin-top: 30px;
-}
-
-.latest-news ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.latest-news ul li {
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: #666;
-}
-
-.latest-news ul li span {
-    font-weight: bold;
-    color: #333;
-    display: block;
-    margin-bottom: 5px;
-}
-
-p {
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.6;
-    max-width: 700px;
     margin: 0 auto 20px;
+    display: block;
 }
 
+/* Links */
 .cv-link {
     font-weight: 600;
     font-size: 1.1rem;
@@ -135,120 +157,10 @@ p {
 }
 
 .cv-link i {
-    margin-left: 5px; /* Adds space between the text and the icon */
-    font-size: 1rem;  /* Adjusts the icon size */
+    margin-left: 5px;
+    font-size: 1rem;
 }
 
 .cv-link:hover {
-    color: #555;  /* Change color on hover */
-}
-
-.cv-link:hover i {
-    color: #555;  /* Change icon color on hover */
-}
-
-/* Experience Timeline Styling */
-
-.experience-icon {
-    position: absolute;
-    left: -0.75rem;
-    top: 0;
-    width: 1.5rem;
-    height: 1.5rem;
-    background-color: #4CAF50;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 0.9rem;
-}
-
-/* Updated Experience Timeline Styling */
-.experience-timeline, .education-timeline {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    margin-top: 30px;
-}
-
-.experience-item, .education-item {
-    margin-bottom: 30px;
-    padding-left: 20px;
-    border-left: 3px solid #4CAF50;
-    position: relative;
-}
-
-.experience-item::before, .education-item::before {
-    content: "";
-    width: 12px;
-    height: 12px;
-    background-color: #4CAF50;
-    border-radius: 50%;
-    position: absolute;
-    left: -6px;
-    top: 5px;
-}
-
-.experience-content h3, .education-content h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #333;
-}
-
-
-/* Updated Experience Section Styling */
-.experience-section {
-    margin-top: 40px;
-    padding: 20px;
-}
-
-.experience-item {
-    margin-bottom: 20px;
-    padding-left: 0;
-    border-left: 3px solid #4CAF50;
-    position: relative;
-}
-
-.experience-item h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #333;
-    margin: 0; /* Remove default margin for tighter alignment */
-    padding-left: 0px;
-}
-
-.institution {
-    font-size: 1rem;
-    font-style: italic;
-    color: #666;
-    margin-top: 0.2rem;
-    padding-left: 0px;
-    text-align: left;
-}
-
-.date {
-    font-size: 0.9rem;
-    color: #888;
-    margin-top: 0 rem;
-    padding-left: 0px;
-    text-align: left;
-}
-
-.description {
-    font-size: 1rem;
     color: #555;
-    margin-top: 0.3rem;
-    line-height: 1.4;
-    padding-left: 0px;
-    text-align: left;
-}
-
-/* Align Experience Title with the Green Line */
-.experience-section h2 {
-    text-align: left;
-    margin-left: -10px; /* Shift the title to the left */
-    padding-left: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
