@@ -72,7 +72,7 @@ h2 {
     padding-left: 0;
     text-align: left;
     /* border-left: 3px solid #ccc; */ /* Aligns with green line */
-    padding-left: 10px; /* Creates spacing from green line */
+    padding-left: 0px; /* Creates spacing from green line */
 }
 
 /* Experience Section Styling */
