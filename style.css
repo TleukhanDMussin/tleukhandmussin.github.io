@@ -99,7 +99,7 @@ h2 {
     content: "";
     width: 12px;
     height: 12px;
-    background-color: transparent;
+    background-color: #ccc;
     border-radius: 50%;
     position: absolute;
     left: -6px; /* Align bullet closer to green line */
