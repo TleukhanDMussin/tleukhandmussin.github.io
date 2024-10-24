@@ -260,7 +260,7 @@ p {
 
 .experience-item {
     margin-bottom: 20px;
-    padding-left: 5px;
+    padding-left: 0;
     border-left: 3px solid #4CAF50;
     position: relative;
 }
@@ -269,6 +269,7 @@ p {
     font-size: 1.15rem;
     font-weight: 600;
     color: #333;
+    margin-left: 20px;
 }
 
 .institution {
@@ -276,12 +277,14 @@ p {
     font-style: italic;
     color: #666;
     margin-top: 0.3rem;
+    margin-left: 20px;
 }
 
 .date {
     font-size: 0.9rem;
     color: #888;
     margin-top: 0.2rem;
+    margin-left: 20px;
 }
 
 .description {
@@ -289,6 +292,7 @@ p {
     color: #555;
     margin-top: 0.5rem;
     line-height: 1.4;
+    margin-left: 20px;
 }
 
 /* Align Experience Title with the Green Line */
