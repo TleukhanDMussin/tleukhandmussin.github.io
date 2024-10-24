@@ -91,7 +91,7 @@ h2 {
     margin-bottom: 20px;
     padding-left: 0; /* Remove extra padding */
     position: relative;
-    border-left: 3px solid #ccc; /* Green line */
+    /*border-left: 3px solid #ccc; /* Green line */*/
     padding-top: 5px;
 }
 
@@ -99,7 +99,7 @@ h2 {
     content: "";
     width: 12px;
     height: 12px;
-    background-color: #ccc;
+    background-color: transparent;
     border-radius: 50%;
     position: absolute;
     left: -6px; /* Align bullet closer to green line */
