@@ -314,6 +314,13 @@ p {
     object-fit: cover; /* Scale image to cover its container */
 }
 
+.project2-details-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover; /* Scale image to cover its container */
+}
+
 .project-date {
     font-size: 0.9rem;
     color: #888;
