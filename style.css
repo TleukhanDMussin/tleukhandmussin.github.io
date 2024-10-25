@@ -315,10 +315,11 @@ p {
 }
 
 .project2-details-image {
-    width: 100%;
+    width: 80%;
     height: auto;
     border-radius: 8px;
-    object-fit: cover; /* Scale image to cover its container */
+    /*object-fit: cover;*/
+    border: 2px solid #888; /* Adds a visible grey border */
 }
 
 .project-date {
