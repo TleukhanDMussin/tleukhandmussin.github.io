@@ -66,6 +66,8 @@
     <p>Within each time window, events are sub-sampled to reduce data density and computational load. Time normalization is then applied to standardize the 
         temporal scale across windows, ensuring consistency in the time representation for each graph.</p>
 
+    <img src="project3/SubSampling.png" alt="Denoising Process" class="inline-image">
+
     <h3>4. Edge Creation</h3>
     <p>Events within each time window are connected to form a graph. A radius-neighborhood algorithm creates edges between nodes (events) that are spatially and temporally close within the window. 
         This captures local spatio-temporal relationships among events in that timeframe.</p>
