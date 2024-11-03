@@ -381,7 +381,7 @@ p {
 }
 
 .inline-image {
-    width: 30%; /* You can adjust the width as needed */
+    width: 60%; /* You can adjust the width as needed */
     max-width: 600px; /* Ensures the image doesn’t get too large */
     margin: 10px 0; /* Adds vertical space above and below the image */
     display: block;
