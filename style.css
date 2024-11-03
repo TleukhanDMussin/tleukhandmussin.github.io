@@ -381,13 +381,14 @@ p {
 }
 
 .inline-image {
-    width: 100%; /* You can adjust the width as needed */
-    max-width: 400px; /* Ensures the image doesn’t get too large */
-    margin: 10px 0; /* Adds vertical space above and below the image */
+    width: 100%; /* Adjust width if needed */
+    max-width: 400px;
+    margin: 10px 0;
     display: block;
     margin-left: auto;
-    margin-right: auto; /* Centers the image */
-    border-radius: 8px; /* Optional: adds rounded corners */
+    margin-right: auto;
+    border-radius: 8px;
+    border: 2px solid #888; /* Optional: Add visible borders */
 }
 
 
