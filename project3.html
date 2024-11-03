@@ -71,7 +71,32 @@
     <p>The result is a sequence of graphs, each representing the spatio-temporal structure of events within a single time window. 
         This graph sequence enables the GNN to learn dynamic patterns across time, making it effective for tasks like gesture recognition in event-based vision systems.</p>
 
-    <h4>Technologies Used</h4>
+    <h4>Graph Neural Network (GNN) Summary</h4>
+    <p>Graph Neural Networks (GNNs) extend the concept of traditional Convolutional Neural Networks (CNNs) to work with data represented as graphs, rather than on grid-like data such as images. Unlike CNNs, which apply convolutional operations on a regular grid, GNNs use a graph structure with nodes (vertices) and edges that represent relationships between the data points. Here’s a breakdown of the core concepts and architecture in GNNs:</p>
+
+    <h5>1. Graph Structure</h5>
+    <p>In a graph <code>G = (V, E)</code>, <code>V</code> represents the nodes (individual data points or entities), and <code>E</code> represents the edges, which define relationships between the nodes. The structure of the graph is represented by an adjacency matrix, which indicates whether nodes are connected and may include edge weights or types to represent the strength or type of relationships.</p>
+
+    <h5>2. Node and Edge Features</h5>
+    <p>Each node has a feature vector that encodes information about that node. These feature vectors are combined into a node feature matrix, and similarly, edge feature vectors (if present) are combined into an edge feature matrix. This representation allows GNNs to capture node-specific and edge-specific information.</p>
+
+    <h5>3. Graph Convolutional Layers</h5>
+    <p>The core operation in GNNs includes two main steps: <strong>aggregation</strong> and <strong>updating</strong>.</p>
+    <ul>
+        <li><strong>Aggregation</strong>: Each node collects feature information from its neighboring nodes through message passing. This step ensures that the node's representation incorporates relevant information from its surroundings, capturing local structure.</li>
+        <li><strong>Updating</strong>: The aggregated information is then transformed, often through a neural layer with learnable parameters, to update the node's feature vector. This step may change the dimensionality of the node embeddings, creating higher-level feature representations with each layer.</li>
+    </ul>
+
+    <h5>4. Pooling and Readout</h5>
+    <p>In GNNs, pooling layers are used to reduce the graph's size by clustering nodes or sub-graphs, which helps retain important structural information. This process is critical for obtaining a graph-level representation.</p>
+    <p>The <strong>readout</strong> operation aggregates the node-level embeddings to produce a fixed-size graph representation. This step enables GNNs to perform graph-level tasks, such as classification, by transforming the entire graph into a single representation vector.</p>
+
+    <h5>5. Model Architecture</h5>
+    <p>The architecture generally includes multiple graph convolutional layers, often followed by pooling layers and a Multi-Layer Perceptron (MLP) for classification or regression. GNNs can perform tasks at different levels: node-level, edge-level, and graph-level predictions, depending on the application requirements.</p>
+
+    <p>By iteratively processing local neighborhoods through multiple layers, GNNs capture both local and global patterns within the graph. This property makes GNNs especially suitable for applications involving non-grid data structures, such as social networks, molecular structures, and event-based vision systems.</p>
+
+    <h6>Technologies Used</h6>
     <ul>
         <li>Event-based Vision Sensors</li>
         <li>ROS (Robot Operating System)</li>
@@ -80,7 +105,7 @@
         <li>Machine Learning for Object Detection</li>
     </ul>
 
-    <h5>Project Gallery</h5>
+    <h7>Project Gallery</h7>
     <div class="project-gallery">
         <img src="project2/euclidean_distances.png" alt="Robot Catching Object" class="gallery-image">
         <img src="project2/assemble sensor1.png" alt="Event-based Vision in Action" class="gallery-image">
