@@ -43,9 +43,7 @@
     <p class="project-date">Project Date: May 29, 2023</p>
 
     <p>
-        In this project, we explore the use of event-based cameras to improve the performance of high-speed catching tasks with quadrupedal robots. 
-        Event-based cameras are specialized sensors that capture changes in the scene asynchronously, enabling faster response times and lower 
-        latency compared to traditional frame-based cameras.
+        In this project, we explore the use of event-based cameras to classify hand gestures. The model used for this project is Graph Neural Networks.
     </p>
 
     <h2>Event Preprocessing Summary</h2>
@@ -55,6 +53,8 @@
     <h3>1. Denoising</h3>
     <p>Isolated, noisy events are removed by applying a space-time filter. This step eliminates spurious events that don't have nearby events in space and time, 
         improving data quality and reducing the likelihood of overfitting.</p>
+
+    <img src="project3/Denoising.png" alt="Denoising Process" class="inline-image">
 
     <h3>2. Time Window Selection</h3>
     <p>The continuous event stream is divided into small, fixed-duration time windows. Each time window captures the events occurring within that timeframe, 
