@@ -40,7 +40,7 @@
     <!-- New Image Container -->
      <img src="project2/fig1_hope.png" alt="Event-based Agile Object Catching" class="project2-details-image">
 
-    <p class="project-date">Project Date: May 29, 2023</p>
+    <p class="project-date">Project Date: May, 2024</p>
 
     <p>
         In this project, we explore the use of event-based cameras to improve the performance of high-speed catching tasks with quadrupedal robots. 
@@ -48,30 +48,18 @@
         latency compared to traditional frame-based cameras.
     </p>
 
-    <h2>Event Preprocessing Summary</h2>
-    <p>The event preprocessing pipeline for DVS (Dynamic Vision Sensor) data converts raw, continuous event streams into a structured, graph-based format suitable for 
-        Graph Neural Networks (GNNs). Here’s a summary of each stage:</p>
+    <p>
+        The main goal of this project is to design a control system for a quadrupedal robot that can detect and catch high-speed objects 
+        traveling at up to 15 m/s. By leveraging the advantages of event-based vision, the robot can process visual data more efficiently, 
+        making it better suited for real-time dynamic interactions in complex environments.
+    </p>
 
-    <h3>1. Denoising</h3>
-    <p>Isolated, noisy events are removed by applying a space-time filter. This step eliminates spurious events that don't have nearby events in space and time, 
-        improving data quality and reducing the likelihood of overfitting.</p>
+    <p>
+        The outcomes of this project demonstrate significant improvements in the reaction speed and accuracy of robotic systems in fast-paced 
+        scenarios, paving the way for more agile and efficient robotic solutions in industries such as manufacturing, logistics, and search-and-rescue operations.
+    </p>
 
-    <h3>2. Time Window Selection</h3>
-    <p>The continuous event stream is divided into small, fixed-duration time windows. Each time window captures the events occurring within that timeframe, 
-        effectively segmenting the stream into discrete chunks. Each time window serves as a snapshot, which becomes the basis for creating a separate graph.</p>
-
-    <h3>3. Sub-sampling and Time Normalization</h3>
-    <p>Within each time window, events are sub-sampled to reduce data density and computational load. Time normalization is then applied to standardize the 
-        temporal scale across windows, ensuring consistency in the time representation for each graph.</p>
-
-    <h3>4. Edge Creation</h3>
-    <p>Events within each time window are connected to form a graph. A radius-neighborhood algorithm creates edges between nodes (events) that are spatially and temporally close within the window. 
-        This captures local spatio-temporal relationships among events in that timeframe.</p>
-
-    <p>The result is a sequence of graphs, each representing the spatio-temporal structure of events within a single time window. 
-        This graph sequence enables the GNN to learn dynamic patterns across time, making it effective for tasks like gesture recognition in event-based vision systems.</p>
-
-    <h4>Technologies Used</h4>
+    <h2>Technologies Used</h2>
     <ul>
         <li>Event-based Vision Sensors</li>
         <li>ROS (Robot Operating System)</li>
@@ -80,7 +68,7 @@
         <li>Machine Learning for Object Detection</li>
     </ul>
 
-    <h5>Project Gallery</h5>
+    <h2>Project Gallery</h2>
     <div class="project-gallery">
         <img src="project2/euclidean_distances.png" alt="Robot Catching Object" class="gallery-image">
         <img src="project2/assemble sensor1.png" alt="Event-based Vision in Action" class="gallery-image">
