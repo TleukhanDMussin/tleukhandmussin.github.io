@@ -382,7 +382,7 @@ p {
 
 .inline-image {
     width: 100%; /* Adjust width if needed */
-    max-width: 400px;
+    max-width: 500px;
     margin: 10px 0;
     display: block;
     margin-left: auto;
