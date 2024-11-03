@@ -380,4 +380,15 @@ p {
     background-color: #555;
 }
 
+.inline-image {
+    width: 100%; /* You can adjust the width as needed */
+    max-width: 600px; /* Ensures the image doesn’t get too large */
+    margin: 10px 0; /* Adds vertical space above and below the image */
+    display: block;
+    margin-left: auto;
+    margin-right: auto; /* Centers the image */
+    border-radius: 8px; /* Optional: adds rounded corners */
+}
+
+
 /*---------------------------------------------------------------------------------------------------------------------*/
