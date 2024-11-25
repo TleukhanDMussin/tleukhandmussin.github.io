@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tleukhan's Webpage</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">Tleukhan Mussin</div>
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="cv.html">CV</a>
+            <a href="projects.html" class="active">Projects</a> <!-- Active state for Projects page -->
+            <a href="publications.html">Publications</a>
+            <a href="photos.html">Photos</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Project Details Section -->
+<div class="project-details container">
+    <h1>Blood Suction Using Reinforcement Learning</h1>
+
+    <!-- Links to GitHub and Publication -->
+    <div class="project-links">
+        <a href="https://github.com/TleukhanDMussin/BloodSuction_ReinforcementLearning" target="_blank" class="link-button">
+            View on GitHub
+        </a>
+    </div>
+     
+    <!-- New Image Container -->
+     <img src="project4/Challenge_Video (2).gif" alt="Event-based Agile Object Catching" class="project2-details-image">
+
+    <p class="project-date">Project Date: July, 2023</p>
+
+    <p>
+        The Blood Suction Simulator is designed to model the dynamics of blood particles during a surgical suction process. The primary objective of this simulator is not to create a visually
+        realistic portrayal of blood flow but to accurately represent the physical behavior of blood under suction. The RL model was trained using Soft Actor-Critic (SAC) algorithm, giving input the 
+        blood region as an image mask.
+    </p>
+
+    <p>
+        
+        Particles are updated using Verlet integration, which provides stability and accuracy in the simulation of motion. Each particle's state is updated based on its interactions with other particles and 
+        the environment. The system calculates forces resulting from collisions between particles and with walls, ensuring realistic particle behavior without overlapping or unrealistic merging.
+        The suction tool's influence is modeled through a force that decays with distance from the tool, applied in the direction of the tool's position. This simulates the decrease in suction effect as 
+        distance increases.
+    </p>
+
+    <p>
+            Soft Actor-Critic (SAC) can be effectively used to train the agent for the blood suction task, using its ability to handle continuous action spaces and optimize complex reward structures. 
+        In SAC, the agent learns a policy \( \pi(a|s) \) that outputs actions (e.g., suction parameters) given the state (image mask of blood regions). The algorithm optimizes a stochastic policy by maximizing the 
+        soft value function:
+        </p>
+        <p>
+            \[
+            J(\pi) = \mathbb{E}_{s_t, a_t \sim \pi} \left[ Q(s_t, a_t) - \alpha \log \pi(a_t|s_t) \right],
+            \]
+        </p>
+        <p>
+            where \( Q(s_t, a_t) \) estimates the expected return, and \( \alpha \) controls the trade-off between exploration (high entropy) and exploitation (low entropy). 
+            SAC uses two neural networks: a critic network to approximate \( Q(s, a) \) using the Bellman equation and an actor network to model \( \pi(a|s) \). The image mask is processed via convolutional layers, 
+            extracting features fed into these networks. During training, the agent observes the current image mask, selects actions, and receives a reward based on the reduction in blood regions. 
+            This reward encourages the agent to optimize suction actions while ensuring robust exploration through the entropy term, making SAC suitable for dynamic and uncertain environments like your simulator.
+        </p>
+    </p>
+
+    <p>
+        The agent efficiently controled the suction tool, minimizing blood regions in the image mask while dynamically adapting suction intensity, position, and duration based on the blood distribution. 
+        The learned policy prioritized dense regions initially and fine-tune actions to clear residual spots, achieving high removal efficiency across various scenarios. 
+        Results included significant reductions in residual blood (83), faster and more precise operations compared to heuristic methods, and robust adaptability to diverse environments.
+    </p>
+
+    <h2>Technologies Used</h2>
+    <ul>
+        <li>C++ library for Verlet integration</li>
+        <li>NVIDIA RTX GPU</li>
+        <li>My brain</li>
+    </ul>
+
+    <h2>Project Gallery</h2>
+    <div class="project-gallery">
+        <img src="project4/Blood1.png" alt="Robot Catching Object" class="gallery-image">
+        <img src="project4/Blood2.png" alt="Event-based Vision in Action" class="gallery-image">
+        <img src="project4/Blood3.png" alt="High-Speed Object Detection" class="gallery-image">
+    </div>
+
+</div>
+
+</body>
+</html>
