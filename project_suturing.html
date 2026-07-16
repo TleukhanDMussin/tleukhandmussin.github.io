@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Simulation of Surgical Suturing Using PBD and MPM</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">Tleukhan Mussin</div>
+
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="cv.html">CV</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="publications.html">Publications</a>
+            <a href="photos.html">Photos</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Project Details Section -->
+<div class="project-details container">
+
+    <h1>
+        Simulation of Surgical Suturing Using Position-Based Dynamics
+        and the Material Point Method
+    </h1>
+
+    <!-- Project Links -->
+    <div class="project-links">
+        <!-- Replace these placeholders with the final links -->
+        <a href="#" target="_blank" class="link-button">
+            View on GitHub
+        </a>
+
+        <a href="#" target="_blank" class="link-button">
+            View Publication
+        </a>
+    </div>
+
+    <!-- Main Project Image -->
+    <!-- Replace this path with your actual image -->
+    <img
+        src="project_suturing/main figure.png"
+        alt="Surgical suturing simulation with a PBD suture and MPM soft tissue"
+        class="project2-details-image"
+    >
+
+    <p class="project-date">Project Date: 2025</p>
+
+    <!-- Overview -->
+    <h2>Project Overview</h2>
+
+    <p>
+        This project introduces a high-performance surgical suturing simulator
+        that combines a custom Material Point Method soft-tissue solver with a
+        Position-Based Dynamics suture model. The simulator reproduces dynamic
+        contact between a flexible thread, a curved surgical needle, and
+        deformable tissue while remaining efficient enough for parallel
+        reinforcement-learning environments.
+    </p>
+
+    <p>
+        The main technical challenge was coupling two different physics systems.
+        The soft tissue is simulated using physically based continuum mechanics,
+        while the suture is represented as a lightweight rope governed by
+        positional constraints. A custom two-way coupling method transfers contact
+        forces and momentum between these solvers.
+    </p>
+
+    <!-- Core Physics -->
+    <h2>Custom-Developed Physics</h2>
+
+    <h3>MPM Soft-Tissue Simulation</h3>
+
+    <p>
+        The soft tissue is simulated using the custom CUDA-accelerated
+        CRESSim-MPM framework. Unlike simplified constraint-based tissue models,
+        the Material Point Method represents tissue as a continuum material with
+        physically meaningful deformation, stress, velocity, and mass.
+    </p>
+
+    <ul>
+        <li>
+            Tissue is discretized into moving Lagrangian material points.
+        </li>
+        <li>
+            Each material point stores mass, velocity, deformation gradient,
+            and stress information.
+        </li>
+        <li>
+            Deformation calculations are performed on a temporary Eulerian grid.
+        </li>
+        <li>
+            The solver supports large deformation and complex tool–tissue contact.
+        </li>
+        <li>
+            CUDA kernels accelerate the particle and grid computations on the GPU.
+        </li>
+    </ul>
+
+    <h3>MPM Simulation Pipeline</h3>
+
+    <ol>
+        <li>
+            <strong>Particle-to-Grid:</strong>
+            Material-point mass, momentum, and stress are transferred to nearby
+            grid nodes.
+        </li>
+        <li>
+            <strong>Grid Update:</strong>
+            Internal forces, external forces, contact, and momentum are resolved
+            on the grid.
+        </li>
+        <li>
+            <strong>Grid-to-Particle:</strong>
+            Updated velocities and deformation information are transferred back
+            to the tissue particles.
+        </li>
+        <li>
+            <strong>Grid Reset:</strong>
+            Temporary grid data are cleared before the next simulation step.
+        </li>
+    </ol>
+
+    <p>
+        This approach preserves a stronger connection to material mechanics than
+        using Position-Based Dynamics for the tissue itself. It therefore avoids
+        relying entirely on artificial positional constraints and difficult
+        non-physical parameter tuning to reproduce tissue behavior.
+    </p>
+
+    <!-- PBD Suture -->
+    <h2>Position-Based Dynamics Suture</h2>
+
+    <p>
+        The surgical suture is represented as a chain of connected particles.
+        Position-Based Dynamics was selected because it provides a stable and
+        computationally efficient way to simulate flexible rope-like objects in
+        real time.
+    </p>
+
+    <ul>
+        <li>
+            Distance constraints preserve the length between neighboring particles.
+        </li>
+        <li>
+            Bending constraints control the curvature between particle triplets.
+        </li>
+        <li>
+            XPBD compliance parameters provide controllable thread stiffness.
+        </li>
+        <li>
+            The model does not require particle orientations.
+        </li>
+        <li>
+            A rigged cylindrical mesh follows the particles to visualize the thread.
+        </li>
+    </ul>
+
+    <p>
+        The PBD implementation is lightweight even when executed on the CPU.
+        In the parallel simulator, the PBD rope calculation and visual alignment
+        required only approximately <strong>0.63 ms</strong> per simulation step,
+        making soft-tissue computation the primary performance bottleneck.
+    </p>
+
+    <!-- Solver Coupling -->
+    <h2>Two-Way PBD–MPM Contact Coupling</h2>
+
+    <p>
+        A custom coupling layer was developed to enable the PBD suture to interact
+        dynamically with the MPM tissue. Instead of constraining the thread to a
+        predefined needle path, the system allows the suture and tissue to exchange
+        forces during insertion and motion through the tissue.
+    </p>
+
+    <h3>Suture Representation Inside the MPM Solver</h3>
+
+    <ul>
+        <li>
+            Virtual line segments are constructed between neighboring PBD particles.
+        </li>
+        <li>
+            Each segment is registered as a one-dimensional contact geometry in
+            the MPM solver.
+        </li>
+        <li>
+            These geometries allow the tissue grid to detect contact with the
+            thread during the MPM grid-update stage.
+        </li>
+        <li>
+            Frictional and drag forces model resistance as the suture moves through
+            deformable tissue.
+        </li>
+    </ul>
+
+    <h3>Two-Way Momentum Transfer</h3>
+
+    <ol>
+        <li>
+            PBD particle positions are used to update the virtual line segments.
+        </li>
+        <li>
+            The MPM solver detects contact between the segments and the tissue.
+        </li>
+        <li>
+            Contact forces from the thread modify the tissue-grid momentum.
+        </li>
+        <li>
+            The resulting tissue reaction impulses are recorded by the MPM solver.
+        </li>
+        <li>
+            These impulses are transferred back to the corresponding PBD particles.
+        </li>
+        <li>
+            The next PBD step updates the thread using both its internal constraints
+            and the tissue-contact response.
+        </li>
+    </ol>
+
+    <p>
+        This creates a closed physical interaction loop: the suture pushes and
+        deforms the tissue, while the tissue resists and redirects the suture.
+        The method produces stable and visually plausible suture–tissue interaction
+        without treating the thread as a purely kinematic object.
+    </p>
+
+    <!-- Needle Interaction -->
+    <h2>Needle–Tissue Interaction</h2>
+
+    <p>
+        The curved surgical needle is represented as a one-dimensional arc-shaped
+        manifold during contact with the tissue. The custom contact model permits
+        tangential motion along the needle curve while constraining unrealistic
+        motion away from the insertion path.
+    </p>
+
+    <ul>
+        <li>
+            The needle penetrates and travels through the deformable MPM body.
+        </li>
+        <li>
+            Contact is resolved directly during the MPM grid update.
+        </li>
+        <li>
+            The attached PBD thread follows the needle while remaining dynamically
+            coupled to the tissue.
+        </li>
+        <li>
+            The complete system supports insertion, needle driving, and extraction.
+        </li>
+    </ul>
+
+    <!-- Parallelism -->
+    <h2>Massively Parallel Simulation</h2>
+
+    <p>
+        The simulator was designed for robot learning, where thousands or millions
+        of interactions must be collected efficiently. Multiple independent
+        suturing scenes can run concurrently, with each scene containing its own
+        tissue, needle, suture, physics state, and reinforcement-learning agent.
+    </p>
+
+    <h3>Parallel Environment Architecture</h3>
+
+    <ul>
+        <li>
+            Ten independent training environments were executed concurrently.
+        </li>
+        <li>
+            Each environment contained an MPM tissue model with
+            <strong>20,000 material points</strong>.
+        </li>
+        <li>
+            Each environment also contained a PBD suture with
+            <strong>20 particles</strong>.
+        </li>
+        <li>
+            The profiled setup therefore simulated approximately
+            <strong>200,000 tissue material points</strong> at once.
+        </li>
+        <li>
+            Every environment maintained separate physics and reinforcement-learning
+            state.
+        </li>
+    </ul>
+
+    <h3>CUDA Stream Parallelism</h3>
+
+    <p>
+        Scene-related memory transfers and MPM computations were separated across
+        multiple CUDA streams. This allows GPU operations from different scenes
+        and solver stages to overlap rather than being executed entirely in
+        sequence.
+    </p>
+
+    <ul>
+        <li>
+            Separate CUDA streams process independent simulation scenes.
+        </li>
+        <li>
+            Data transfers can overlap with physics-kernel execution.
+        </li>
+        <li>
+            MPM steps from different environments can occupy the GPU concurrently.
+        </li>
+        <li>
+            Two CUDA streams provided the largest practical performance improvement
+            on an NVIDIA RTX 4090.
+        </li>
+        <li>
+            Additional streams produced smaller gains because of GPU resource
+            limitations such as register pressure.
+        </li>
+    </ul>
+
+    <!-- Performance Results -->
+    <h2>Physics Performance Results</h2>
+
+    <div class="project-results">
+
+        <h3>CUDA Stream Scaling</h3>
+
+        <ul>
+            <li>
+                <strong>1 CUDA stream:</strong> 5.85 ± 0.15 ms per MPM physics step
+            </li>
+            <li>
+                <strong>2 CUDA streams:</strong> 2.10 ± 0.13 ms per MPM physics step
+            </li>
+            <li>
+                <strong>3 CUDA streams:</strong> 1.97 ± 0.17 ms per MPM physics step
+            </li>
+            <li>
+                <strong>4 CUDA streams:</strong> 1.70 ± 0.20 ms per MPM physics step
+            </li>
+        </ul>
+
+        <p>
+            Moving from one to two CUDA streams reduced the measured MPM step time
+            by approximately <strong>64%</strong>. This demonstrated that scene-level
+            concurrency and asynchronous GPU execution substantially improved the
+            throughput of the parallel simulator.
+        </p>
+
+        <h3>Component-Level Performance</h3>
+
+        <ul>
+            <li>
+                <strong>MPM soft-tissue physics:</strong> 4.96 ± 0.35 ms
+            </li>
+            <li>
+                <strong>PBD physics and visual alignment:</strong> 0.63 ± 0.07 ms
+            </li>
+            <li>
+                <strong>MPM soft-tissue rendering:</strong> 0.60 ± 0.70 ms
+            </li>
+        </ul>
+
+        <p>
+            The results show that the custom MPM soft-body solver dominates the
+            computational cost, while the PBD thread remains inexpensive. This
+            hybrid design enables physically richer soft-tissue behavior without
+            sacrificing the speed required for reinforcement learning.
+        </p>
+
+    </div>
+
+    <!-- RL Environment -->
+    <h2>Reinforcement-Learning Environment</h2>
+
+    <p>
+        A parallel reinforcement-learning task was developed to validate that the
+        custom physics framework can support autonomous surgical skill learning.
+        The task was divided into three sequential phases.
+    </p>
+
+    <ol>
+        <li>
+            <strong>Needle Insertion:</strong>
+            Guide the needle tip toward the designated entry marker.
+        </li>
+        <li>
+            <strong>Needle Driving:</strong>
+            Rotate the curved needle through the tissue while minimizing unwanted
+            translational sliding.
+        </li>
+        <li>
+            <strong>Needle Extraction:</strong>
+            Exit the tissue through the designated target marker.
+        </li>
+    </ol>
+
+    <h3>Training Setup</h3>
+
+    <ul>
+        <li>Unity ML-Agents Toolkit</li>
+        <li>Proximal Policy Optimization and Soft Actor-Critic</li>
+        <li>Ten concurrent simulation environments</li>
+        <li>250 × 250 RGB visual observations</li>
+        <li>Needle position and orientation observations</li>
+        <li>Three temporally stacked observations</li>
+        <li>0.004-second simulation time step</li>
+        <li>Actions issued every 20 simulation steps</li>
+        <li>NVIDIA RTX 4090 GPU</li>
+    </ul>
+
+    <!-- Learning Results -->
+    <h2>Robot-Learning Results</h2>
+
+    <div class="project-results">
+
+        <h3>Needle Insertion</h3>
+
+        <ul>
+            <li>
+                <strong>80% success</strong> within the strict 0.075 UU threshold
+            </li>
+            <li>
+                <strong>85% success</strong> within the 0.12 UU threshold
+            </li>
+            <li>
+                <strong>91% success</strong> within the 0.18 UU threshold
+            </li>
+        </ul>
+
+        <h3>Needle Extraction</h3>
+
+        <ul>
+            <li>
+                <strong>68% success</strong> within the strict 0.075 UU threshold
+            </li>
+            <li>
+                <strong>74% success</strong> within the 0.12 UU threshold
+            </li>
+            <li>
+                <strong>85% success</strong> within the 0.18 UU threshold
+            </li>
+        </ul>
+
+        <p>
+            Both PPO and SAC demonstrated stable policy improvement. Exit accuracy
+            was lower than insertion accuracy because the needle becomes visually
+            occluded after entering the tissue, forcing the policy to rely more
+            heavily on proprioceptive observations and its previously selected
+            trajectory.
+        </p>
+
+    </div>
+
+    <!-- Main Contributions -->
+    <h2>Main Contributions</h2>
+
+    <ul>
+        <li>
+            Extended CRESSim-MPM with a real-time PBD surgical-suture model.
+        </li>
+        <li>
+            Developed custom continuum-based soft-tissue physics using MPM.
+        </li>
+        <li>
+            Introduced two-way contact coupling between PBD rope particles and
+            MPM soft tissue.
+        </li>
+        <li>
+            Modelled frictional and drag interaction between the suture and tissue.
+        </li>
+        <li>
+            Integrated curved-needle penetration with deformable-tissue contact.
+        </li>
+        <li>
+            Implemented scene-level GPU parallelism using multiple CUDA streams.
+        </li>
+        <li>
+            Built ten concurrent physics-rich environments for robot learning.
+        </li>
+        <li>
+            Validated the framework by training autonomous needle-insertion,
+            driving, and extraction policies.
+        </li>
+    </ul>
+
+    <!-- Limitations -->
+    <h2>Current Limitations</h2>
+
+    <ul>
+        <li>
+            Needle motion is currently restricted to a planar workspace.
+        </li>
+        <li>
+            The needle is treated directly as the agent rather than being controlled
+            through a complete surgical manipulator.
+        </li>
+        <li>
+            Needle re-grasping and hand-off are not yet modelled.
+        </li>
+        <li>
+            Suture self-collision and knot tying are not currently supported.
+        </li>
+        <li>
+            Full dual-arm autonomous suturing remains future work.
+        </li>
+    </ul>
+
+    <!-- Technologies Used -->
+    <h2>Technologies Used</h2>
+
+    <ul>
+        <li>Material Point Method</li>
+        <li>Position-Based Dynamics and XPBD</li>
+        <li>Custom PBD–MPM Contact Coupling</li>
+        <li>Continuum Soft-Tissue Mechanics</li>
+        <li>CUDA and CUDA Streams</li>
+        <li>GPU-Parallel Simulation</li>
+        <li>CRESSim-MPM</li>
+        <li>Unity</li>
+        <li>Unity ML-Agents</li>
+        <li>Proximal Policy Optimization</li>
+        <li>Soft Actor-Critic</li>
+        <li>NVIDIA RTX 4090</li>
+    </ul>
+
+    <!-- Project Gallery -->
+    <h2>Project Gallery</h2>
+
+    <div class="project-gallery">
+        <img
+            src="project_suturing/pbd_mpm_coupling.png"
+            alt="Contact coupling between the PBD suture and MPM soft tissue"
+            class="gallery-image"
+        >
+
+        <img
+            src="project_suturing/parallel_environments.png"
+            alt="Parallel surgical suturing simulation environments"
+            class="gallery-image"
+        >
+
+        <img
+            src="project_suturing/rl_suturing_results.png"
+            alt="Reinforcement-learning policy performing needle insertion and extraction"
+            class="gallery-image"
+        >
+    </div>
+
+</div>
+
+</body>
+</html>
