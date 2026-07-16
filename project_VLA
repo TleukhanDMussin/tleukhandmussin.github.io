@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision-Language-Action Model for Robot-Assisted Blood Suction</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">Tleukhan Mussin</div>
+
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="cv.html">CV</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="publications.html">Publications</a>
+            <a href="photos.html">Photos</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Project Details Section -->
+<div class="project-details container">
+
+    <h1>Vision-Language-Action Model for Robot-Assisted Blood Suction</h1>
+
+    <!-- Project Links -->
+    <div class="project-links">
+        <!-- Replace the links below when the GitHub repository and paper page are available -->
+        <a href="#" target="_blank" class="link-button">
+            View on GitHub
+        </a>
+
+        <a href="#" target="_blank" class="link-button">
+            View Publication
+        </a>
+    </div>
+
+    <!-- Main Project Image -->
+    <!-- Replace the image path with your actual project image -->
+    <img
+        src="project-vla/main_figure.png"
+        alt="Vision-Language-Action model for autonomous robot-assisted blood suction"
+        class="project2-details-image"
+    >
+
+    <p class="project-date">Project Date: 2025</p>
+
+    <!-- Project Overview -->
+    <h2>Project Overview</h2>
+
+    <p>
+        This project introduces an end-to-end Vision-Language-Action policy for
+        autonomous blood suction in robot-assisted surgery. The system receives
+        a live image of the surgical scene together with a natural-language
+        instruction and directly predicts continuous motion commands for the
+        robotic suction tool.
+    </p>
+
+    <p>
+        Unlike hierarchical approaches that separate task planning, perception,
+        and low-level robot control, the proposed method combines these components
+        within a single generalist model. The objective was to investigate whether
+        a language-conditioned VLA policy could achieve performance comparable to
+        a specialized reinforcement-learning controller.
+    </p>
+
+    <!-- How the System Works -->
+    <h2>How the System Works</h2>
+
+    <ul>
+        <li>
+            A camera captures the current state of the surgical field.
+        </li>
+        <li>
+            The image and a language instruction are passed to the fine-tuned
+            OpenVLA model.
+        </li>
+        <li>
+            The model predicts continuous tool movements in the
+            <strong>Δx, Δy, and Δz</strong> directions.
+        </li>
+        <li>
+            The suction tool executes the predicted movement and removes nearby
+            blood particles.
+        </li>
+        <li>
+            The process repeats in real time until the blood pool is cleared.
+        </li>
+    </ul>
+
+    <!-- Simulation and Dataset -->
+    <h2>Simulation and Dataset</h2>
+
+    <p>
+        Training data were collected in the CRESSim surgical simulator, which
+        models deformable tissue, blood particles, active bleeding sources, blood
+        clots, and multiple independent blood pools.
+    </p>
+
+    <ul>
+        <li>
+            Blood was simulated using Position-Based Dynamics.
+        </li>
+        <li>
+            Human demonstrations were collected using an Xbox controller.
+        </li>
+        <li>
+            Each sample contained an image, a language instruction, and a
+            corresponding robot action.
+        </li>
+        <li>
+            The dataset included scenes with one, two, and four blood pools.
+        </li>
+        <li>
+            Four different suction instructions were used during data collection.
+        </li>
+        <li>
+            The final dataset was converted into RLDS format for OpenVLA training.
+        </li>
+    </ul>
+
+    <!-- Model Training -->
+    <h2>Model Training</h2>
+
+    <p>
+        The OpenVLA foundation model was adapted to the blood suction task using
+        two training strategies:
+    </p>
+
+    <h3>LoRA Fine-Tuning</h3>
+
+    <ul>
+        <li>
+            Updated only a small subset of the model parameters.
+        </li>
+        <li>
+            Required significantly less computational power.
+        </li>
+        <li>
+            Completed in approximately two hours on an NVIDIA RTX 4090.
+        </li>
+        <li>
+            Produced limited performance because of the large domain gap between
+            general manipulation data and surgical fluid scenes.
+        </li>
+    </ul>
+
+    <h3>Full Fine-Tuning</h3>
+
+    <ul>
+        <li>
+            Updated the vision encoder, projection layers, and language model.
+        </li>
+        <li>
+            Adapted the model more effectively to surgical images and fluid dynamics.
+        </li>
+        <li>
+            Completed in approximately three hours using eight NVIDIA A100 GPUs.
+        </li>
+        <li>
+            Achieved substantially better suction performance than LoRA.
+        </li>
+    </ul>
+
+    <!-- Key Results -->
+    <h2>Key Results</h2>
+
+    <div class="project-results">
+
+        <h3>Simulation Performance</h3>
+
+        <ul>
+            <li>
+                The fully fine-tuned VLA removed approximately
+                <strong>92% of blood particles on average</strong>.
+            </li>
+            <li>
+                Some simulation trials achieved complete blood removal.
+            </li>
+            <li>
+                The average end-to-end inference latency was approximately
+                <strong>235 ms</strong> on an NVIDIA RTX 4090.
+            </li>
+            <li>
+                The model remained effective when the background color, number of
+                blood pools, and initial suction-tool position were changed.
+            </li>
+        </ul>
+
+        <h3>Path Planning</h3>
+
+        <ul>
+            <li>
+                The VLA followed highly consistent and repeatable trajectories on
+                unseen blood-pool maps.
+            </li>
+            <li>
+                Its behavior resembled human demonstrations by clearing one region
+                before moving to the next.
+            </li>
+            <li>
+                The VLA required significantly fewer simulation steps than the
+                reinforcement-learning baseline.
+            </li>
+            <li>
+                The reinforcement-learning agent still achieved more complete blood
+                removal in the tested simulation episodes.
+            </li>
+        </ul>
+
+        <h3>Language Instruction Following</h3>
+
+        <ul>
+            <li>
+                The model was tested with instructions based on pool size, blood
+                clots, and active bleeding.
+            </li>
+            <li>
+                Success rates ranged from approximately
+                <strong>45% to 60%</strong> in two-pool scenes.
+            </li>
+            <li>
+                Performance decreased when four blood pools were present.
+            </li>
+            <li>
+                The main difficulties were spatial reasoning, size comparison, and
+                long-horizon multi-step planning.
+            </li>
+        </ul>
+
+        <h3>Real-World Performance</h3>
+
+        <ul>
+            <li>
+                The system was transferred to a da Vinci Research Kit suction tool.
+            </li>
+            <li>
+                Tests were performed using 3D-printed tissue models and red liquid.
+            </li>
+            <li>
+                On white and gray tissue surfaces, the system often left only around
+                <strong>10% of the original liquid area</strong>.
+            </li>
+            <li>
+                Performance degraded on dark blue surfaces because the blood region
+                had lower visual contrast.
+            </li>
+        </ul>
+
+    </div>
+
+    <!-- Main Contributions -->
+    <h2>Main Contributions</h2>
+
+    <ul>
+        <li>
+            Developed an end-to-end VLA policy for autonomous surgical blood suction.
+        </li>
+        <li>
+            Integrated a generalist VLA model with a physics-based fluid simulation.
+        </li>
+        <li>
+            Compared LoRA and full fine-tuning for a specialized surgical task.
+        </li>
+        <li>
+            Evaluated suction efficiency, path consistency, language understanding,
+            robustness, and sim-to-real transfer.
+        </li>
+        <li>
+            Demonstrated that a generalist VLA can approach reinforcement-learning
+            performance while producing more efficient and human-like trajectories.
+        </li>
+    </ul>
+
+    <!-- Limitations -->
+    <h2>Current Limitations</h2>
+
+    <ul>
+        <li>
+            Limited understanding of spatial and comparative instructions.
+        </li>
+        <li>
+            Reduced performance on long, multi-step commands.
+        </li>
+        <li>
+            Sensitivity to visual domain changes, particularly dark backgrounds.
+        </li>
+        <li>
+            Slightly lower blood-removal completeness than a specialized RL policy.
+        </li>
+    </ul>
+
+    <!-- Technologies Used -->
+    <h2>Technologies Used</h2>
+
+    <ul>
+        <li>Vision-Language-Action Models</li>
+        <li>OpenVLA</li>
+        <li>LoRA and Full Fine-Tuning</li>
+        <li>PyTorch</li>
+        <li>CRESSim Surgical Simulator</li>
+        <li>Unity and NVIDIA PhysX 5</li>
+        <li>Position-Based Fluid Dynamics</li>
+        <li>Python and OpenCV</li>
+        <li>Da Vinci Research Kit</li>
+        <li>Simulation-to-Real Transfer</li>
+        <li>NVIDIA RTX 4090 and A100 GPUs</li>
+    </ul>
+
+    <!-- Project Gallery -->
+    <h2>Project Gallery</h2>
+
+    <div class="project-gallery">
+        <img
+            src="project-vla/system_overview.png"
+            alt="Overview of the VLA-controlled blood suction system"
+            class="gallery-image"
+        >
+
+        <img
+            src="project-vla/path_comparison.png"
+            alt="Comparison of VLA and reinforcement-learning suction paths"
+            class="gallery-image"
+        >
+
+        <img
+            src="project-vla/real_world_experiment.png"
+            alt="Real-world robotic blood suction experiment"
+            class="gallery-image"
+        >
+    </div>
+
+</div>
+
+</body>
+</html>
